@@ -41,52 +41,111 @@ const restaurant = {
       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     );
   },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious past with ${ing1}, ${ing2}, and ${ing3}`
+    );
+  },
 };
 
-restaurant.orderDelivery({
-  time: '22:30',
-  address: 'Via del Sole, 21',
-  mainIndex: 2,
-  starterIndex: 2,
-});
+const arr = [7, 8, 9];
 
-restaurant.orderDelivery({
-  address: 'Via del Sole, 21',
-  starterIndex: 1,
-});
+// old way to add elements to an array
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr);
 
-// To destructure objects we use {}
-const { name, openingHours, categories } = restaurant;
-console.log(name, openingHours, categories);
+// new way to add elements to any array, new in E6, Spread Operator
+const newArr = [1, 2, ...arr];
+console.log(newArr);
 
-const {
-  name: restaurantName,
-  openingHours: hours,
-  categories: tags,
-} = restaurant;
+// add elements to an object with Spread Operator
+// note: we are creating a new array, and not mutating the origianal array
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu);
 
-console.log(restaurantName, hours, tags);
+// Copy Array
+const mainMenuCopy = [...restaurant.mainMenu];
+console.log(mainMenuCopy);
 
-// Defualt Values
-const { menu = [], starterMenu: starters = [] } = restaurant;
-console.log(menu, starters);
+// Join 2 arrays
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menu);
 
-// Mutating Variables
-let a = 111;
-let b = 999;
-console.log(a, b);
+// Iterables: arrays, strings, maps sets. Not objects
+const str = 'Svederus';
+const letters = [...str, ' ', 'S.'];
+console.log(letters);
+console.log(...str);
+// console.log(`${str}` don);  // wont work, multiple elements only epxected in new arrays or funtions.
 
-const obj = { a: 23, b: 7, c: 14 };
-console.log(a, b);
+// Real-world Example
+const ingredients = [
+  // prompt("let's make pasta! Ingredient 1? "),
+  // prompt('Ingredient 2?'),
+  // prompt('Ingredient 3?'),
+];
+console.log(ingredients);
 
-({ a, b } = obj);
-console.log(a, b);
+//old way
+restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
 
-// Nested objects
-const {
-  fri: { open: o, close: c },
-} = openingHours;
-console.log(o, c);
+// new way
+restaurant.orderPasta(...ingredients);
+
+// Objects
+const newRestaurant = { foundedIn: 1988, ...restaurant, founder: 'Guiseppe' };
+console.log(newRestaurant);
+
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = 'Ristorante Roma';
+console.log(restaurantCopy.name);
+console.log(restaurant.name);
+
+// restaurant.orderDelivery({
+//   time: '22:30',
+//   address: 'Via del Sole, 21',
+//   mainIndex: 2,
+//   starterIndex: 2,
+// });
+
+// restaurant.orderDelivery({
+//   address: 'Via del Sole, 21',
+//   starterIndex: 1,
+// });
+
+// // To destructure objects we use {}
+// const { name, openingHours, categories } = restaurant;
+// console.log(name, openingHours, categories);
+
+// const {
+//   name: restaurantName,
+//   openingHours: hours,
+//   categories: tags,
+// } = restaurant;
+
+// console.log(restaurantName, hours, tags);
+
+// // Defualt Values
+// const { menu = [], starterMenu: starters = [] } = restaurant;
+// console.log(menu, starters);
+
+// // Mutating Variables
+// let a = 111;
+// let b = 999;
+// console.log(a, b);
+
+// const obj = { a: 23, b: 7, c: 14 };
+// console.log(a, b);
+
+// ({ a, b } = obj);
+// console.log(a, b);
+
+// // Nested objects
+// const {
+//   fri: { open: o, close: c },
+// } = openingHours;
+// console.log(o, c);
 
 ///////////////////////////
 //Destructuring Arrays
