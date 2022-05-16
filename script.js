@@ -49,58 +49,58 @@ const restaurant = {
   },
 };
 
-const arr = [7, 8, 9];
+// const arr = [7, 8, 9];
 
-// old way to add elements to an array
-const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
-console.log(badNewArr);
+// // old way to add elements to an array
+// const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+// console.log(badNewArr);
 
-// new way to add elements to any array, new in E6, Spread Operator
-const newArr = [1, 2, ...arr];
-console.log(newArr);
+// // new way to add elements to any array, new in E6, Spread Operator
+// const newArr = [1, 2, ...arr];
+// console.log(newArr);
 
-// add elements to an object with Spread Operator
-// note: we are creating a new array, and not mutating the origianal array
-const newMenu = [...restaurant.mainMenu, 'Gnocci'];
-console.log(newMenu);
+// // add elements to an object with Spread Operator
+// // note: we are creating a new array, and not mutating the origianal array
+// const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+// console.log(newMenu);
 
-// Copy Array
-const mainMenuCopy = [...restaurant.mainMenu];
-console.log(mainMenuCopy);
+// // Copy Array
+// const mainMenuCopy = [...restaurant.mainMenu];
+// console.log(mainMenuCopy);
 
-// Join 2 arrays
-const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
-console.log(menu);
+// // Join 2 arrays
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// console.log(menu);
 
-// Iterables: arrays, strings, maps sets. Not objects
-const str = 'Svederus';
-const letters = [...str, ' ', 'S.'];
-console.log(letters);
-console.log(...str);
-// console.log(`${str}` don);  // wont work, multiple elements only epxected in new arrays or funtions.
+// // Iterables: arrays, strings, maps sets. Not objects
+// const str = 'Svederus';
+// const letters = [...str, ' ', 'S.'];
+// console.log(letters);
+// console.log(...str);
+// // console.log(`${str}` don);  // wont work, multiple elements only epxected in new arrays or funtions.
 
-// Real-world Example
-const ingredients = [
-  // prompt("let's make pasta! Ingredient 1? "),
-  // prompt('Ingredient 2?'),
-  // prompt('Ingredient 3?'),
-];
-console.log(ingredients);
+// // Real-world Example
+// const ingredients = [
+//   // prompt("let's make pasta! Ingredient 1? "),
+//   // prompt('Ingredient 2?'),
+//   // prompt('Ingredient 3?'),
+// ];
+// console.log(ingredients);
 
-//old way
-restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
+// //old way
+// restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
 
-// new way
-restaurant.orderPasta(...ingredients);
+// // new way
+// restaurant.orderPasta(...ingredients);
 
-// Objects
-const newRestaurant = { foundedIn: 1988, ...restaurant, founder: 'Guiseppe' };
-console.log(newRestaurant);
+// // Objects
+// const newRestaurant = { foundedIn: 1988, ...restaurant, founder: 'Guiseppe' };
+// console.log(newRestaurant);
 
-const restaurantCopy = { ...restaurant };
-restaurantCopy.name = 'Ristorante Roma';
-console.log(restaurantCopy.name);
-console.log(restaurant.name);
+// const restaurantCopy = { ...restaurant };
+// restaurantCopy.name = 'Ristorante Roma';
+// console.log(restaurantCopy.name);
+// console.log(restaurant.name);
 
 // restaurant.orderDelivery({
 //   time: '22:30',
