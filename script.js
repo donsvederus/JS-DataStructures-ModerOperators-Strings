@@ -4,6 +4,24 @@
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+const  Hours = {
+    [weekdays[3]]: {
+      open: 12,
+      close: 22,
+    },
+    [weekdays[4]]: {
+      open: 11,
+      close: 23,
+    },
+    [weekdays[5]]: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  };
+
+
 // Data needed for first part of the section
 const restaurant = {
   name: 'Classico Italiano',
@@ -11,27 +29,16 @@ const restaurant = {
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  // openingHours: openingHours,
+  // ES6 enhanced object literals
+  Hours,
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
 
-  order: function (starterIndex, mainIndex) {
+  order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
-  orderDelivery: function ({
+  orderDelivery({
     starterIndex = 1,
     mainIndex = 0,
     time = '20:00',
@@ -42,17 +49,19 @@ const restaurant = {
     );
   },
 
-  orderPasta: function (ing1, ing2, ing3) {
+  orderPasta(ing1, ing2, ing3) {
     console.log(
       `Here is your delicious past with ${ing1}, ${ing2}, and ${ing3}`
     );
   },
 
-  orderPizza: function (mainIngredient, ...otherIngredients)  {
+  orderPizza(mainIngredient, ...otherIngredients) {
     console.log(mainIngredient);
     console.log(otherIngredients);
   },
 };
+
+console.log(restaurant);
 
 
 
@@ -119,15 +128,15 @@ const restaurant = {
 // const allPlayers = [...players1, ...players2];
 // console.log(allPlayers);
 
-// // 4. 
+// // 4.
 // const players1Final = [...players1, 'thiago', 'Coutinho', 'Periscic'];
 // console.log(players1Final);
 
-// // 5. 
+// // 5.
 // const {odds: {team1, x:draw, team2}} = game;
 // console.log(team1, draw, team2);
 
-// // 6. 
+// // 6.
 // const printGoals = function (...players) {
 //   console.log(`${players.length} goals were scored`);
 // };
@@ -139,11 +148,10 @@ const restaurant = {
 // // 7.
 // team1 < team2 && console.log('Team 1 is more likely to win');
 
-
 // ///////////////////////////////////////
 // // Coding Challenge #1
 
-// /* 
+// /*
 // We're building a football betting app (soccer for my American friends 😅)!
 
 // Suppose we get data from a web service about a certain game (below). In this challenge we're gonna work with the data. So here are your tasks:
@@ -161,7 +169,6 @@ const restaurant = {
 // GOOD LUCK 😀
 // */
 
-
 // restaurant.numGuests = 0;
 // const guests = restaurant.numGuests || 10;
 // console.log(guests);
@@ -171,7 +178,7 @@ const restaurant = {
 // console.log(guestCorrect);
 
 // console.log("------ OR ------");
-// // Use and return ANY truthy data, short-circuiting 
+// // Use and return ANY truthy data, short-circuiting
 // console.log(3 || 'Svederus'); // 3
 // console.log("" || 'Svederus'); // Svederus
 // console.log(true || 0); // true
