@@ -63,6 +63,33 @@ const restaurant = {
 
 console.log(restaurant);
 
+if (restaurant.Hours && restaurant.Hours.mon)
+  console.log(restaurant.Hours.mon.open);
+
+// console.log(restaurant.Hours.mon.open)
+
+// with optional chaining
+console.log(restaurant.Hours.mon?.open)
+console.log(restaurant.Hours?.mon?.open)
+
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+for (const day of days) {
+  const open = restaurant.Hours[day]?.open ?? 'closed';
+  console.log(`On ${day}', we open at ${open}`);  
+}
+
+// Methods
+console.log(restaurant.order?.(0,1) ?? 'Method odes not exist')
+console.log(restaurant.orderRisotto?.(0,1) ?? 'Method odes not exist')
+
+// Arrays
+const users = [{ name: 'Don', email: 'don@don.com'}];
+// const users = [];
+
+console.log(users[0]?.name ?? 'User array empty');
+
+if (users.length > 0) console.log(users[0].name);
+else console.log('user array empty');
 
 
 // const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
